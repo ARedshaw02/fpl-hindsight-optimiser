@@ -43,10 +43,14 @@ def player_gameweek_data(start_gameweek, end_gameweek, bootstrap_data):
 
     players_df = pd.DataFrame(bootstrap_data["elements"])
     # Keep only the relevant columns
-
-    players_df = players_df[["id", "web_name", "element_type", "now_cost", "cost_change_start"]]
+    players_df = players_df[["id", "web_name", "element_type", "now_cost", "cost_change_start", "team_code"]]
     cost_change_start = players_df["cost_change_start"]
     players_df["cost_change_start"] = players_df["now_cost"] - cost_change_start
+
+    # Convert team_code to team short name
+    teams = pd.DataFrame(bootstrap_data["teams"])[["code", "short_name"]]
+    players_df = players_df.merge(teams, left_on="team_code", right_on="code", how="left")
+    players_df.drop(columns=["team_code", "code"], inplace=True)
 
     # Rename cost_change_start to cost_start
     players_df.rename(columns={"element_type" : "positions" ,"cost_change_start": "start_cost"}, inplace=True)
@@ -64,11 +68,17 @@ def player_gameweek_data(start_gameweek, end_gameweek, bootstrap_data):
         # Create a dictionary to map player IDs to their points
         points_dict = {element["id"]: element["stats"]["total_points"] for element in data["elements"]}
 
-        # Use the dictionary to add the players' gameweek points to a column titled gw_{i}
-        players_df[f"gw_{i}"] = players_df["id"].apply(lambda x: points_dict.get(x, 0))
+        # Create a dictionary to map player IDs to their minutes played
+        minutes_dict = {element["id"]: element["stats"]["minutes"] for element in data["elements"]}
+
+        # Use the dictionary to add the players' gameweek points to a column titled gw_{i}_points
+        players_df[f"gw_{i}_points"] = players_df["id"].apply(lambda x: points_dict.get(x, 0))
+
+        # Use the dictionary to add the players' gameweek minutes played to a column titled gw_{i}_minutes
+        players_df[f"gw_{i}_minutes"] = players_df["id"].apply(lambda x: minutes_dict.get(x, 0))
 
         # Add the players' gameweek points to their total points
-        players_df["total_points"] += players_df[f"gw_{i}"]
+        players_df["total_points"] += players_df[f"gw_{i}_points"]
 
     return players_df
 
@@ -81,12 +91,4 @@ if __name__ == "__main__":
         end_gameweek = current_gameweek
 
     player_gameweek_df = player_gameweek_data(start_gameweek, current_gameweek, data)
-    
-    player_data = {}
-    for index, row in player_gameweek_df.iterrows():
-        player_data[row["id"]] = {
-            "name": row["web_name"],
-            "position": row["positions"],
-            "start_cost": row["start_cost"],
-            "total_points": row["total_points"]
-        }
+    print(player_gameweek_df.head())
