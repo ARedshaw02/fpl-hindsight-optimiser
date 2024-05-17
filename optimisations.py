@@ -1,7 +1,6 @@
 from fpl_data_retrieval import get_fpl_data, get_current_gameweek, player_gameweek_data
 import pulp as plp
 import pandas as pd
-import numpy as np
 
 def all_player_data(start_gameweek, end_gameweek):
     """
@@ -27,7 +26,23 @@ def all_player_data(start_gameweek, end_gameweek):
     # Retrieve player gameweek data for the specified range of gameweeks
     return player_gameweek_data(start_gameweek, end_gameweek, data)
 
-def basic_set_and_forget(player_gameweek_df, bench_multiplier, budget):
+def basic_set_and_forget(player_gameweek_df, bench_multiplier, budget=1000):
+    """
+    Solves the basic 'set and forget problem' using PuLP. The set and forget problem considers a team
+    that is chosen from gameweek 1, with a budget of 100m, and no further changes are made.
+    This basic modelling does not explicitly consider substitutions when players do not feature, 
+    or vice captain swapping when the captain does not feature. For this reason, it will not be fully optimal, 
+    but the use of the bench multiplier, and later comparisons of different values for this, should enable
+    optimisation to a relatively high level.
+
+    Args:
+        player_gameweek_df (pd.DataFrame): The player gameweek data.
+        bench_multiplier (float): The multiplier for bench players (also applied to the vice captain).
+        budget (float): The budget for the team (million value divided by 0.1m).
+
+    Returns:
+        Tuple[List[LpVariable], List[LpVariable], List[LpVariable], List[LpVariable]]: The decision variables for lineup, bench, captaincy, and vice_captaincy.
+    """
     df = player_gameweek_df[["id", "total_points", "short_name", "positions", "start_cost"]]   
     
     player_ids = df['id'].tolist()
@@ -93,13 +108,77 @@ def basic_set_and_forget(player_gameweek_df, bench_multiplier, budget):
 
     plp.LpSolverDefault.msg = 0
     model.solve()
-    print(plp.value(model.objective))
 
-    return lineup, bench, captaincy
+    return lineup, bench, captaincy, vice_captaincy
+
+def retrieve_base_id(decision_var):
+    """
+    Retrieve the base id from the decision variable.
+
+    Args:
+        decision_var (str): The decision variable.
+
+    Returns:
+        int: The base id.
+    """
+    # Remove all non-digit characters from the decision variable.
+    decision_var = ''.join(i for i in decision_var if i.isdigit())
+
+    # Convert the string to an integer and return.
+    return int(decision_var)
+
+def retrieve_refactored_model_output(lineup, bench, captaincy, vice_captaincy):
+    """
+    Retrieve the output of the basic set and forget model after solving.
+    
+    Args:
+        lineup (list): The lineup decision variables.
+        bench (list): The bench decision variables.
+        captaincy (list): The captaincy decision variables.
+        vice_captaincy (list): The vice captaincy decision variables.
+    
+    Returns:
+        dict: A dictionary containing the lineup, bench, captaincy, and vice captaincy player ids.
+    """
+    # Define the variables and mapping
+    variables = [lineup, bench, captaincy, vice_captaincy]
+
+    # Define the mapping from variable index to variable name
+    mapping_dict = {
+        0 : 'lineup',
+        1 : 'bench',
+        2 : 'captaincy',
+        3 : 'vice_captaincy'
+    }
+
+    # Define the dictionary to store the output
+    return_dict = {
+        'lineup': [],
+        'bench': [],
+        'captaincy': [],
+        'vice_captaincy': []
+    }
+
+    # Loop over the variables and retrieve the player ids
+    for i, variable in enumerate(variables):
+        for j in range(len(variable)):
+            # Check if the variable is selected
+            if variable[j].value() == 1:
+                # Retrieve the player id and add it to the return dictionary
+                return_dict[mapping_dict[i]].append(retrieve_base_id(variable[j].name))
+    
+    # Return the output dictionary
+    return return_dict
 
 if __name__ == "__main__":
     min_gameweek = 1
     max_gameweek = 38
     player_gameweek_df = all_player_data(min_gameweek, max_gameweek)
 
-    lineup, bench, captaincy = basic_set_and_forget(player_gameweek_df, 100000)
+    lineup, bench, captaincy, vice_captaincy = basic_set_and_forget(player_gameweek_df, 0.15, 1000)
+    
+    model_output = retrieve_refactored_model_output(lineup, bench, captaincy, vice_captaincy)
+    print(model_output)
+
+    # TODO: Test with different bench multiplier values. Implement function for subbing and vice captain swapping,
+    # and compare model totals to optimise. 
