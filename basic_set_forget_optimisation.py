@@ -1,6 +1,7 @@
 from fpl_data_retrieval import get_fpl_data, get_current_gameweek, player_gameweek_data
 import pulp as plp
 import pandas as pd
+import itertools
 
 def all_player_data(start_gameweek, end_gameweek):
     """
@@ -430,6 +431,53 @@ def print_lineup(df):
     print(f'Captain: {captain} | Vice captain: {vice_captain}')
 
 def find_optimal_weighting_and_ordering(player_gameweek_df, weights_array):
+    best_weights_bench_order = []
+    for weight in weights_array:
+        lineup, bench, captaincy, vice_captaincy = basic_set_and_forget(player_gameweek_df, weight, 1000)
+
+        model_output = retrieve_refactored_model_output(lineup, bench, captaincy, vice_captaincy)
+        model_players_df = retrieve_model_gameweek_history(model_output, player_gameweek_df)
+        lineup_players = model_players_df[(model_players_df['in_lineup'] == True)]['id'].tolist()
+        bench_players = model_players_df[(model_players_df['on_bench'] == True) & (model_players_df['positions'] != 'GK')]['id'].tolist()
+        bench_gk = model_players_df[(model_players_df['on_bench'] == True) & (model_players_df['positions'] == 'GK')]['id'].tolist()
+
+        players_bench_orders = list(itertools.permutations(bench_players))
+
+        best_total_points = 0
+        best_simulated_season = None
+        for bench_order in players_bench_orders:
+            print(f'Processing weight: {weight}, bench order: {bench_order}', end='\r', flush=True)
+            bench_order = lineup_players + bench_gk + list(bench_order)
+
+            copy_model_players_df = model_players_df.copy()
+            copy_model_players_df.loc[:, 'bench_order'] = pd.Categorical(copy_model_players_df['id'], bench_order, ordered=True)
+            sorted_players_df = copy_model_players_df.sort_values('bench_order').reset_index(drop=True)
+
+            simulated_season = simulate_model_team(sorted_players_df)
+
+            total_points = 0
+            for gw in simulated_season:
+                for gw_num, gw_data in gw.items():
+                    total_points += gw_data['points']
+
+            if total_points > best_total_points:
+                best_total_points = total_points
+                best_simulated_season = simulated_season
+            
+        weight_best_order_return_dic = {
+            'weight': weight,
+            'best_total_points': best_total_points,
+            'best_simulated_season': best_simulated_season
+        }
+
+        best_weights_bench_order.append(weight_best_order_return_dic)
+    
+    return best_weights_bench_order
+
+def best_captain_vice_captain(player_gameweek_df):
+    pass
+
+def order_team(player_gameweek_df, optimal_bench_order):
     pass
 
 if __name__ == "__main__":
@@ -464,5 +512,22 @@ if __name__ == "__main__":
     fully_optimise = 'N'
     fully_optimise = input('Would you like to fully optimise the team (test different bench weightings and bench orderings)? (Y/N) ')
     if fully_optimise.upper() == 'Y':
-        weights_to_test = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+        weights_to_test = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
         simulated_season_optimised_team_order_weights = find_optimal_weighting_and_ordering(player_gameweek_df, weights_to_test)
+        print("\n------------------------------------------------------")
+        print("Deeply optimised solution:")
+        print("------------------------------------------------------")
+        print("Best points total for each model:")
+        
+        most_points = 0
+        most_point_simulation = None
+        for result in simulated_season_optimised_team_order_weights:
+            print(result['weight'], ':', result['best_total_points'], 'points')
+
+            if result['best_total_points'] > most_points:
+                most_points = result['best_total_points']
+                most_point_simulation = result
+        
+        print("\n------------------------------------------------------")
+        print("Best weighting:", most_point_simulation['weight'])
+        print(most_point_simulation)
