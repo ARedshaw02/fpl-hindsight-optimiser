@@ -1,7 +1,8 @@
-from fpl_data_retrieval import get_fpl_data, get_current_gameweek, player_gameweek_data
+from fpl_data_retrieval import get_fpl_data, get_current_gameweek, player_gameweek_data, get_current_season
 import pulp as plp
 import pandas as pd
 import itertools
+import json
 
 def all_player_data(start_gameweek, end_gameweek):
     """
@@ -483,6 +484,7 @@ def best_captain_vice_captain(model_players_df, result):
     copy_model_players_df = model_players_df.copy()
     copy_model_players_df.loc[:, 'bench_order'] = pd.Categorical(copy_model_players_df['id'], team_order, ordered=True)
     sorted_players_df = copy_model_players_df.sort_values('bench_order').reset_index(drop=True)
+    sorted_players_df = sorted_players_df.drop(['bench_order'], axis=1)
 
     starting_lineup_ids = sorted_players_df[(sorted_players_df['in_lineup'] == True)]['id'].tolist()
     all_captaincy_pairs = list(itertools.permutations(starting_lineup_ids, 2))
@@ -552,7 +554,7 @@ if __name__ == "__main__":
     fully_optimise = 'N'
     fully_optimise = input('Would you like to fully optimise the team (test different bench weightings and bench orderings)? (Y/N) ')
     if fully_optimise.upper() == 'Y':
-        weights_to_test = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+        weights_to_test = [0.1, 0.2, 0.4, 0.6, 0.8, 1.0]
         simulated_season_optimised_team_order_weights = find_optimal_weighting_and_ordering(player_gameweek_df, weights_to_test)
         print("\n------------------------------------------------------")
         print("Deeply optimised solution:")
@@ -570,11 +572,16 @@ if __name__ == "__main__":
                 most_point_simulation = result
         
         final_optimised_df = best_captain_vice_captain(model_players_df, most_point_simulation)
-
+        data = get_fpl_data()
+        final_optimised_df.to_csv(f'optimal_teams/set_and_forget/set_and_forget_{get_current_season(data)}_gw{get_current_gameweek(data)}_df.csv', index=False)
         optimised_season_simulation = simulate_model_team(final_optimised_df)
+
+
+
         print("\n------------------------------------------------------")
+        print("Final optimised solution:")
+        print("------------------------------------------------------")
         print_lineup(final_optimised_df)
         print('Total points:', most_points)
         print('Budget spent:', get_team_cost(final_optimised_df))
         print("------------------------------------------------------\n")
-        print(optimised_season_simulation)

@@ -38,6 +38,20 @@ def get_current_gameweek(bootstrap_data):
     # The next() function stops after the first yielded value.
     return next(event["id"] for event in bootstrap_data["events"] if event["is_current"])
 
+def get_current_season(bootstrap_data):
+    """
+    Retrieve the current season from the bootstrap data.
+
+    Args:
+        bootstrap_data (dict): The data retrieved from the API.
+
+    Returns:
+        string: The current season.
+    """
+    current_year = int(bootstrap_data['events'][0]['deadline_time'][:4])
+
+    return str(current_year) + '-' + str(current_year + 1)
+
 def player_gameweek_data(start_gameweek, end_gameweek, bootstrap_data):
     """
     Retrieves player gameweek data from the official API for a given range of gameweeks.
