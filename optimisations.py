@@ -170,6 +170,33 @@ def retrieve_refactored_model_output(lineup, bench, captaincy, vice_captaincy):
     # Return the output dictionary
     return return_dict
 
+def retrieve_model_gameweek_history(model_output, player_gameweek_df):
+    """
+    Retrieve the player gameweek history from the model output.
+
+    Args:
+        model_output (dict): The output of the model.
+        player_gameweek_df (pd.DataFrame): The player gameweek data.
+
+    Returns:
+        pd.DataFrame: The player gameweek history.
+    """
+    # Add binary column values to indicate if the player is in the lineup, bench, captaincy, or vice captaincy
+    player_gameweek_df['in_lineup'] = player_gameweek_df['id'].isin(model_output['lineup'])
+    player_gameweek_df['in_bench'] = player_gameweek_df['id'].isin(model_output['bench'])
+    player_gameweek_df['is_captain'] = player_gameweek_df['id'].isin(model_output['captaincy'])
+    player_gameweek_df['is_vice_captain'] = player_gameweek_df['id'].isin(model_output['vice_captaincy'])
+
+    # Retrieve the player ids from the model output
+    player_ids = model_output['lineup'] + model_output['bench'] + model_output['captaincy'] + model_output['vice_captaincy']
+
+    # Filter the player gameweek data based on the player ids
+    return player_gameweek_df[player_gameweek_df['id'].isin(player_ids)]
+
+def simulate_model_team(model_players_df):
+    def single_gw_simulation(gw):
+        pass
+
 if __name__ == "__main__":
     min_gameweek = 1
     max_gameweek = 38
@@ -178,7 +205,6 @@ if __name__ == "__main__":
     lineup, bench, captaincy, vice_captaincy = basic_set_and_forget(player_gameweek_df, 0.15, 1000)
     
     model_output = retrieve_refactored_model_output(lineup, bench, captaincy, vice_captaincy)
-    print(model_output)
+    model_players_df = retrieve_model_gameweek_history(model_output, player_gameweek_df)
 
-    # TODO: Test with different bench multiplier values. Implement function for subbing and vice captain swapping,
-    # and compare model totals to optimise. 
+    print(model_players_df)
