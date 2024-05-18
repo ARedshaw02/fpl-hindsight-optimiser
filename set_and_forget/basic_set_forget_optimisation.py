@@ -432,41 +432,70 @@ def print_lineup(df):
     print(f'Captain: {captain} | Vice captain: {vice_captain}')
 
 def find_optimal_weighting_and_ordering(player_gameweek_df, weights_array):
+    """
+    Find the optimal weighting and ordering for a given set of weights.
+
+    Args:
+        player_gameweek_df (pandas.DataFrame): The dataframe containing player gameweek history.
+        weights_array (list): The array of weights to search through.
+
+    Returns:
+        list: A list of dictionaries containing the best weight, team order, total points, and simulated season.
+    """
     best_weights_bench_order = []
+
+    # Loop through each weight in the weights array
     for weight in weights_array:
+        # Run the basic set and forget model with the given weight
         lineup, bench, captaincy, vice_captaincy = basic_set_and_forget(player_gameweek_df, weight, 1000)
 
+        # Retrieve the output of the model
         model_output = retrieve_refactored_model_output(lineup, bench, captaincy, vice_captaincy)
+
+        # Retrieve the gameweek history of the model players
         model_players_df = retrieve_model_gameweek_history(model_output, player_gameweek_df)
+
+        # Get the lineup and bench players
         lineup_players = model_players_df[(model_players_df['in_lineup'] == True)]['id'].tolist()
         bench_players = model_players_df[(model_players_df['on_bench'] == True) & (model_players_df['positions'] != 'GK')]['id'].tolist()
         bench_gk = model_players_df[(model_players_df['on_bench'] == True) & (model_players_df['positions'] == 'GK')]['id'].tolist()
 
+        # Get all possible orders for the bench players
         players_bench_orders = list(itertools.permutations(bench_players))
 
+        # Initialize variables to store the best team order and total points
         best_total_points = 0
         best_team_order = None
         best_simulated_season = None
+
+        # Loop through each bench order
         for bench_order in players_bench_orders:
             print(f'Processing weight: {weight}, bench order: {bench_order}', end='\r', flush=True)
+
+            # Create the team order by combining the lineup and bench players
             team_order = lineup_players + bench_gk + list(bench_order)
 
+            # Sort the model players by the team order
             copy_model_players_df = model_players_df.copy()
             copy_model_players_df.loc[:, 'bench_order'] = pd.Categorical(copy_model_players_df['id'], team_order, ordered=True)
             sorted_players_df = copy_model_players_df.sort_values('bench_order').reset_index(drop=True)
 
+            # Simulate the model team's performance
             simulated_season = simulate_model_team(sorted_players_df)
 
+            # Calculate the total points for the simulated season
             total_points = 0
             for gw in simulated_season:
                 for gw_num, gw_data in gw.items():
                     total_points += gw_data['points']
 
+            # Check if the current team order is the best so far
             if total_points > best_total_points:
                 best_total_points = total_points
                 best_team_order = team_order
                 best_simulated_season = simulated_season
-            
+
+        # Create a dictionary to store the best weight, team order, total points, and simulated season
         weight_best_order_return_dic = {
             'weight': weight,
             'best_team_order': best_team_order,
@@ -474,34 +503,53 @@ def find_optimal_weighting_and_ordering(player_gameweek_df, weights_array):
             'best_simulated_season': best_simulated_season
         }
 
+        # Append the dictionary to the list of best weights and bench orders
         best_weights_bench_order.append(weight_best_order_return_dic)
     
+    # Return the list of best weights, team orders, total points, and simulated seasons
     return best_weights_bench_order
 
 def best_captain_vice_captain(model_players_df, result):
+    """
+    Given a model_players_df and a result dictionary, this function finds the best captain and vice-captain
+    for the team. It iterates over all possible pairs of players, sets the captain and vice-captain values
+    accordingly in the model_players_df, and then simulates the team's performance. The pair with the highest
+    total points is returned.
+
+    :param model_players_df: A pandas DataFrame containing the model players and their details.
+    :param result: A dictionary containing the result of the basic set and forget optimisation.
+    :return: A pandas DataFrame containing the best captain and vice-captain for the team.
+    """
+    # Get the best team order from the result
     team_order = result['best_team_order']
 
+    # Create a copy of the model_players_df and assign the team order
     copy_model_players_df = model_players_df.copy()
     copy_model_players_df.loc[:, 'bench_order'] = pd.Categorical(copy_model_players_df['id'], team_order, ordered=True)
     sorted_players_df = copy_model_players_df.sort_values('bench_order').reset_index(drop=True)
     sorted_players_df = sorted_players_df.drop(['bench_order'], axis=1)
 
+    # Get the starting lineup ids
     starting_lineup_ids = sorted_players_df[(sorted_players_df['in_lineup'] == True)]['id'].tolist()
     all_captaincy_pairs = list(itertools.permutations(starting_lineup_ids, 2))
 
+    # Initialize variables to store the best pair
     best_captain = None
     best_vice_captain = None
     best_pair_total_points = 0
+
+    # Iterate over all possible captaincy pairs
     for count, captaincy_pair in enumerate(all_captaincy_pairs):
+        # Create a copy of the model_players_df and set the captain and vice-captain values
         captaincy_check_df = sorted_players_df.copy()
         print(f'Processing captaincy pair: {count} of {len(all_captaincy_pairs)}', end='\r', flush=True)
-        # Set all is_captain and is_vice_captain to False in the captaincy_check_df
         captaincy_check_df.loc[:, 'is_captain'] = False
         captaincy_check_df.loc[:, 'is_vice_captain'] = False
         captaincy_check_df.loc[captaincy_check_df['id'].isin(captaincy_pair), 'is_captain'] = True
         captaincy_check_df.loc[captaincy_check_df['id'].isin(captaincy_pair), 'is_vice_captain'] = True
         captaincy_check_df = captaincy_check_df.reset_index(drop=True)
 
+        # Simulate the team's performance and check if it's the best pair
         simulated_season = simulate_model_team(captaincy_check_df)
         total_points = 0
         for gw in simulated_season:
@@ -513,6 +561,7 @@ def best_captain_vice_captain(model_players_df, result):
             best_captain = captaincy_pair[0]
             best_vice_captain = captaincy_pair[1]
         
+    # Create a final return DataFrame with the best captain and vice-captain values
     final_return_df = sorted_players_df.copy()
     final_return_df.loc[:, 'is_captain'] = False
     final_return_df.loc[:, 'is_vice_captain'] = False
@@ -521,6 +570,35 @@ def best_captain_vice_captain(model_players_df, result):
     final_return_df = final_return_df.reset_index(drop=True)
 
     return final_return_df
+
+def order_df(df):
+    """
+    Orders the given DataFrame by position in the following order: GK, DEF, MID, FWD.
+
+    Args:
+        df (pandas.DataFrame): The DataFrame to be ordered.
+
+    Returns:
+        pandas.DataFrame: A new DataFrame with the ids ordered by position.
+    """
+    # Extract the lineup and bench ids from the DataFrame
+    lineup_ids = df[(df['in_lineup'] == True)]['id'].tolist()
+    bench_ids = df[(df['in_lineup'] == False)]['id'].tolist()
+
+    # Order lineup ids by position in the following order GK, DEF, MID, FWD
+    GK_ids = [id for id in lineup_ids if id in df[(df['positions'] == 'GK')]['id'].tolist()]
+    DEF_ids = [id for id in lineup_ids if id in df[(df['positions'] == 'DEF')]['id'].tolist()]
+    MID_ids = [id for id in lineup_ids if id in df[(df['positions'] == 'MID')]['id'].tolist()]
+    FWD_ids = [id for id in lineup_ids if id in df[(df['positions'] == 'FWD')]['id'].tolist()]
+    ordered_lineup_ids = GK_ids + DEF_ids + MID_ids + FWD_ids + bench_ids
+
+    # Create a new DataFrame with the ordered ids
+    ordered_df = df.copy()
+    ordered_df.loc[:, 'bench_order'] = pd.Categorical(ordered_df['id'], ordered_lineup_ids, ordered=True)
+    ordered_df = ordered_df.sort_values('bench_order').reset_index(drop=True)
+    ordered_df = ordered_df.drop(['bench_order'], axis=1)
+
+    return ordered_df
 
 if __name__ == "__main__":
     min_gameweek = 1
@@ -551,10 +629,12 @@ if __name__ == "__main__":
     print('Budget spent:', get_team_cost(model_players_df))
     print("------------------------------------------------------\n")
 
+    # Create option to test different bench weightings and bench orderings
     fully_optimise = 'N'
     fully_optimise = input('Would you like to fully optimise the team (test different bench weightings and bench orderings)? (Y/N) ')
     if fully_optimise.upper() == 'Y':
         weights_to_test = [0.1, 0.2, 0.4, 0.6, 0.8, 1.0]
+        # Get the results for each weight
         simulated_season_optimised_team_order_weights = find_optimal_weighting_and_ordering(player_gameweek_df, weights_to_test)
         print("\n------------------------------------------------------")
         print("Deeply optimised solution:")
@@ -563,6 +643,7 @@ if __name__ == "__main__":
         
         most_points = 0
         most_point_simulation = None
+        # Get the results for each weight
         for result in simulated_season_optimised_team_order_weights:
             bench_order = result['best_team_order'][-4:]
             print(result['weight'], ':', result['best_total_points'], 'points', '-', bench_order)
@@ -571,13 +652,15 @@ if __name__ == "__main__":
                 most_points = result['best_total_points']
                 most_point_simulation = result
         
-        final_optimised_df = best_captain_vice_captain(model_players_df, most_point_simulation)
+        # Final optimised team used the simulation with the most points
+        final_optimised_df = order_df(best_captain_vice_captain(model_players_df, most_point_simulation))
         data = get_fpl_data()
-        final_optimised_df.to_csv(f'optimal_teams/set_and_forget/set_and_forget_{get_current_season(data)}_gw{get_current_gameweek(data)}_df.csv', index=False)
+        # Export the optimised team
+        final_optimised_df.to_csv(f'set_and_forget/optimal_teams/set_and_forget_{get_current_season(data)}.csv', index=False)
+        # Simulate the model one final time
         optimised_season_simulation = simulate_model_team(final_optimised_df)
 
-
-
+        # Print the results related to the fully optimised model
         print("\n------------------------------------------------------")
         print("Final optimised solution:")
         print("------------------------------------------------------")
