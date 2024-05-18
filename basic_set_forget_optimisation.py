@@ -255,7 +255,8 @@ def simulate_model_team(model_players_df):
         # valid transfers. 
         df = df[keep_columns]
         starting_players = df[(df['in_lineup'] == True)]
-        bench_player_ids = df[(df['on_bench'] == True)]['id'].tolist()
+        bench_player_ids = df[(df['on_bench'] == True) & (df['positions'] != 'GK')]['id'].tolist()
+        bench_keeper_id = df[(df['on_bench'] == True) & (df['positions'] == 'GK')]['id'].tolist()[0]
         starting_defenders = len(starting_players[(starting_players['positions'] == 'DEF')])
         starting_midfielders = len(starting_players[(starting_players['positions'] == 'MID')])
         starting_forwards = len(starting_players[(starting_players['positions'] == 'FWD')])
@@ -353,6 +354,13 @@ def simulate_model_team(model_players_df):
                                 starting_forwards += 1
                             team_gameweek_points += df[(df['id'] == substitute_id)][f'gw_{gw}_points'].iloc[0]
                             subs_made.append({'sub_out:': player, 'sub_in': substitute_id})
+            if bench_keeper_id is not None:
+                if player_position == 'GK':
+                        substitute_id = bench_keeper_id
+                        bench_keeper_id = None
+                        if substitute_id != None:
+                            team_gameweek_points += df[(df['id'] == substitute_id)][f'gw_{gw}_points'].iloc[0]
+                            subs_made.append({'sub_out:': player, 'sub_in': substitute_id})  
 
         # Returns a dictionary for results of the simulation
         return_dic = {
@@ -377,17 +385,21 @@ def simulate_model_team(model_players_df):
 if __name__ == "__main__":
     min_gameweek = 1
     max_gameweek = 38
+    # Pull the relevant fpl data
     player_gameweek_df = all_player_data(min_gameweek, max_gameweek)
 
+    # Complete the base optimisation
     lineup, bench, captaincy, vice_captaincy = basic_set_and_forget(player_gameweek_df, 0.15, 1000)
     
+    # Refactor the model output, and get the gameweek history  for each of the selections
     model_output = retrieve_refactored_model_output(lineup, bench, captaincy, vice_captaincy)
     model_players_df = retrieve_model_gameweek_history(model_output, player_gameweek_df)
     print(model_players_df)
 
+    # Simulate the season, including auto-subs and vice captaincy swapping
     simulated_season = simulate_model_team(model_players_df)
 
-    # Get total points
+    # Get total points for the simulation
     total_points = 0
     for gw in simulated_season:
         for gw_num, gw_data in gw.items():
