@@ -382,6 +382,56 @@ def simulate_model_team(model_players_df):
 
     return points_by_gw
 
+def get_team_cost(df):
+    """
+    Calculate the total cost of a team based on the 'start_cost' column of the DataFrame.
+
+    Args:
+        df (pandas.DataFrame): The DataFrame containing the player data.
+
+    Returns:
+        float: The total cost of the team.
+    """
+    # Calculate the sum of the 'start_cost' column to get the total cost of the team.
+    return df['start_cost'].sum() / 10
+
+def print_lineup(df):
+    """
+    Print the lineup of a team based on the given DataFrame.
+
+    Args:
+        df (pandas.DataFrame): The DataFrame containing the player data.
+    """
+    # Print the starting goalkeeper
+    starting_goalkeeper = df[(df['positions'] == 'GK') & (df['in_lineup'] == True)]['web_name'].tolist()
+    print(f"Starting goalkeeper: {starting_goalkeeper}")
+
+    # Print the starting defenders
+    starting_defenders = df[(df['positions'] == 'DEF') & (df['in_lineup'] == True)]['web_name'].tolist()
+    print(f"Starting defenders: {starting_defenders}")
+
+    # Print the starting midfielders
+    starting_midfielders = df[(df['positions'] == 'MID') & (df['in_lineup'] == True)]['web_name'].tolist()
+    print(f"Starting midfielders: {starting_midfielders}")
+
+    # Print the starting forwards
+    starting_forwards = df[(df['positions'] == 'FWD') & (df['in_lineup'] == True)]['web_name'].tolist()
+    print(f"Starting forwards: {starting_forwards}")
+
+    # Print the bench
+    bench_keeper = df[(df['positions'] == 'GK') & (df['on_bench'] == True)]['web_name'].iloc[0]
+    bench_players = df[(df['on_bench'] == True) & (df['positions'] != 'GK')]['web_name'].tolist()
+    bench_list = [bench_keeper] + bench_players
+    print(f"Bench: {bench_list}")
+
+    # Print captain and vice captain
+    captain = df[(df['is_captain'] == True)]['web_name'].tolist()
+    vice_captain = df[(df['is_vice_captain'] == True)]['web_name'].tolist()
+    print(f'Captain: {captain} | Vice captain: {vice_captain}')
+
+def find_optimal_weighting_and_ordering(player_gameweek_df, weights_array):
+    pass
+
 if __name__ == "__main__":
     min_gameweek = 1
     max_gameweek = 38
@@ -394,7 +444,6 @@ if __name__ == "__main__":
     # Refactor the model output, and get the gameweek history  for each of the selections
     model_output = retrieve_refactored_model_output(lineup, bench, captaincy, vice_captaincy)
     model_players_df = retrieve_model_gameweek_history(model_output, player_gameweek_df)
-    print(model_players_df)
 
     # Simulate the season, including auto-subs and vice captaincy swapping
     simulated_season = simulate_model_team(model_players_df)
@@ -404,5 +453,16 @@ if __name__ == "__main__":
     for gw in simulated_season:
         for gw_num, gw_data in gw.items():
             total_points += gw_data['points']
+    print("\n------------------------------------------------------")
+    print("Higly optimised solution:")
+    print("------------------------------------------------------")
+    print_lineup(model_players_df)
+    print('Total points:', total_points)
+    print('Budget spent:', get_team_cost(model_players_df))
+    print("------------------------------------------------------\n")
 
-    print("Total team points: ",total_points)
+    fully_optimise = 'N'
+    fully_optimise = input('Would you like to fully optimise the team (test different bench weightings and bench orderings)? (Y/N) ')
+    if fully_optimise.upper() == 'Y':
+        weights_to_test = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+        simulated_season_optimised_team_order_weights = find_optimal_weighting_and_ordering(player_gameweek_df, weights_to_test)
