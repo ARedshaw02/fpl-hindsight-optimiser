@@ -633,7 +633,7 @@ if __name__ == "__main__":
     fully_optimise = 'N'
     fully_optimise = input('Would you like to fully optimise the team (test different bench weightings and bench orderings)? (Y/N) ')
     if fully_optimise.upper() == 'Y':
-        weights_to_test = [0.1, 0.2, 0.4, 0.6, 0.8, 1.0]
+        weights_to_test = [0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95]
         # Get the results for each weight
         simulated_season_optimised_team_order_weights = find_optimal_weighting_and_ordering(player_gameweek_df, weights_to_test)
         print("\n------------------------------------------------------")
