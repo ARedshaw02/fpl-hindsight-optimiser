@@ -199,7 +199,7 @@ def simulate_model_team(model_players_df):
     # Check for the current gameweek from the outset, to prevent repeated api calls.
     current_gw = get_current_gameweek(get_fpl_data())
 
-    def get_bench_player(df, bench_ids, pos='*'):
+    def get_bench_player(df, bench_ids, gw, pos='*'):
         """
         Retrieves the first player from the bench list that satisfies the given position.
 
@@ -215,26 +215,28 @@ def simulate_model_team(model_players_df):
         if len(bench_ids) == 0:
             return None
 
-        # If the position is '*', return the first player in the bench list
+        # If the position is '*', return the first player in the bench list with minutes > 0
         if pos == '*':
-            return bench_ids[0]
+            for id in bench_ids:
+                if id in df[(df[f'gw_{gw}_minutes'] > 0)]['id'].tolist():
+                    return id
 
-        # If the position is 'DEF', return the first player in the bench list that is a defender
+        # If the position is 'DEF', return the first player in the bench list that is a defender with minutes > 0
         if pos == 'DEF':
             for id in bench_ids:
-                if id in df[(df['positions'] == 'DEF')]['id'].tolist():
+                if id in df[(df['positions'] == 'DEF') & (df[f'gw_{gw}_minutes'] > 0)]['id'].tolist():
                     return id
 
-        # If the position is 'MID', return the first player in the bench list that is a midfielder
+        # If the position is 'MID', return the first player in the bench list that is a midfielder with minutes > 0
         if pos == 'MID':
             for id in bench_ids:
-                if id in df[(df['positions'] == 'MID')]['id'].tolist():
+                if id in df[(df['positions'] == 'MID') & (df[f'gw_{gw}_minutes'] > 0)]['id'].tolist():
                     return id
 
-        # If the position is 'FWD', return the first player in the bench list that is a forward
+        # If the position is 'FWD', return the first player in the bench list that is a forward with minutes > 0
         if pos == 'FWD':
             for id in bench_ids:
-                if id in df[(df['positions'] == 'FWD')]['id'].tolist():
+                if id in df[(df['positions'] == 'FWD') & (df[f'gw_{gw}_minutes'] > 0)]['id'].tolist():
                     return id
 
         # If no player is found, return None
@@ -295,14 +297,14 @@ def simulate_model_team(model_players_df):
             if bench_player_ids is not None:
                 if player_position == 'DEF':
                     if starting_defenders <= 3:
-                        substitute_id = get_bench_player(df, bench_player_ids, pos='DEF')
+                        substitute_id = get_bench_player(df, bench_player_ids, gw, pos='DEF')
                         if substitute_id != None:
                             bench_player_ids.remove(substitute_id)
                             starting_defenders += 1
                             team_gameweek_points += df[(df['id'] == substitute_id)][f'gw_{gw}_points'].iloc[0]
-                            subs_made.append({'sub_out:': player, 'sub_in': substitute_id})
+                            subs_made.append({'sub_out': player, 'sub_in': substitute_id})
                     else:
-                        substitute_id = get_bench_player(df, bench_player_ids, pos='*')
+                        substitute_id = get_bench_player(df, bench_player_ids, gw, pos='*')
                         if substitute_id != None:
                             bench_player_ids.remove(substitute_id)
                             sub_position = df[(df['id'] == substitute_id)]['positions'].iloc[0]
@@ -313,17 +315,17 @@ def simulate_model_team(model_players_df):
                             elif sub_position == 'FWD':
                                 starting_forwards += 1
                             team_gameweek_points += df[(df['id'] == substitute_id)][f'gw_{gw}_points'].iloc[0]
-                            subs_made.append({'sub_out:': player, 'sub_in': substitute_id})
+                            subs_made.append({'sub_out': player, 'sub_in': substitute_id})
                 if player_position == 'MID':
                     if starting_midfielders <= 2:
-                        substitute_id = get_bench_player(df, bench_player_ids, pos='MID')
+                        substitute_id = get_bench_player(df, bench_player_ids, gw, pos='MID')
                         if substitute_id != None:
                             bench_player_ids.remove(substitute_id)
                             starting_midfielders += 1
                             team_gameweek_points += df[(df['id'] == substitute_id)][f'gw_{gw}_points'].iloc[0]
-                            subs_made.append({'sub_out:': player, 'sub_in': substitute_id})
+                            subs_made.append({'sub_out': player, 'sub_in': substitute_id})
                     else:
-                        substitute_id = get_bench_player(df, bench_player_ids, pos='*')
+                        substitute_id = get_bench_player(df, bench_player_ids, gw, pos='*')
                         if substitute_id != None:
                             bench_player_ids.remove(substitute_id)
                             sub_position = df[(df['id'] == substitute_id)]['positions'].iloc[0]
@@ -334,17 +336,17 @@ def simulate_model_team(model_players_df):
                             elif sub_position == 'FWD':
                                 starting_forwards += 1
                             team_gameweek_points += df[(df['id'] == substitute_id)][f'gw_{gw}_points'].iloc[0]
-                            subs_made.append({'sub_out:': player, 'sub_in': substitute_id})
+                            subs_made.append({'sub_out': player, 'sub_in': substitute_id})
                 if player_position == 'FWD':
                     if starting_forwards <= 1:
-                        substitute_id = get_bench_player(df, bench_player_ids, pos='FWD')
+                        substitute_id = get_bench_player(df, bench_player_ids, gw, pos='FWD')
                         if substitute_id != None:
                             bench_player_ids.remove(substitute_id)
                             starting_forwards += 1
                             team_gameweek_points += df[(df['id'] == substitute_id)][f'gw_{gw}_points'].iloc[0]
-                            subs_made.append({'sub_out:': player, 'sub_in': substitute_id})
+                            subs_made.append({'sub_out': player, 'sub_in': substitute_id})
                     else:
-                        substitute_id = get_bench_player(df, bench_player_ids, pos='*')
+                        substitute_id = get_bench_player(df, bench_player_ids, gw, pos='*')
                         if substitute_id != None:
                             bench_player_ids.remove(substitute_id)
                             sub_position = df[(df['id'] == substitute_id)]['positions'].iloc[0]
@@ -355,14 +357,14 @@ def simulate_model_team(model_players_df):
                             elif sub_position == 'FWD':
                                 starting_forwards += 1
                             team_gameweek_points += df[(df['id'] == substitute_id)][f'gw_{gw}_points'].iloc[0]
-                            subs_made.append({'sub_out:': player, 'sub_in': substitute_id})
+                            subs_made.append({'sub_out': player, 'sub_in': substitute_id})
             if bench_keeper_id is not None:
                 if player_position == 'GK':
                         substitute_id = bench_keeper_id
                         bench_keeper_id = None
                         if substitute_id != None:
                             team_gameweek_points += df[(df['id'] == substitute_id)][f'gw_{gw}_points'].iloc[0]
-                            subs_made.append({'sub_out:': player, 'sub_in': substitute_id})  
+                            subs_made.append({'sub_out': player, 'sub_in': substitute_id})  
 
         # Returns a dictionary for results of the simulation
         return_dic = {
