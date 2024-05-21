@@ -285,8 +285,8 @@ def simulate_model_team(model_players_df):
             team_gameweek_points += captain[f'gw_{gw}_points']
             did_captain_play = True
         else:
-            team_gameweek_points += vice_captain[f'gw_{gw}_points']
             if vice_captain[f'gw_{gw}_minutes'] > 0:
+                team_gameweek_points += vice_captain[f'gw_{gw}_points']
                 vice_play_in_captains_place = True
         
         subs_made = []
@@ -547,8 +547,8 @@ def best_captain_vice_captain(model_players_df, result):
         print(f'Processing captaincy pair: {count} of {len(all_captaincy_pairs)}', end='\r', flush=True)
         captaincy_check_df.loc[:, 'is_captain'] = False
         captaincy_check_df.loc[:, 'is_vice_captain'] = False
-        captaincy_check_df.loc[captaincy_check_df['id'].isin(captaincy_pair), 'is_captain'] = True
-        captaincy_check_df.loc[captaincy_check_df['id'].isin(captaincy_pair), 'is_vice_captain'] = True
+        captaincy_check_df.loc[captaincy_check_df['id'] == captaincy_pair[0], 'is_captain'] = True
+        captaincy_check_df.loc[captaincy_check_df['id'] == captaincy_pair[1], 'is_vice_captain'] = True
         captaincy_check_df = captaincy_check_df.reset_index(drop=True)
 
         # Simulate the team's performance and check if it's the best pair
