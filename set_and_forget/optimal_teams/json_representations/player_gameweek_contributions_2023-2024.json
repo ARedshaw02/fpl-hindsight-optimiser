@@ -233,6 +233,240 @@
             }
         }
     },
+    "5": {
+        "web_name": "Gabriel",
+        "position": "DEF",
+        "gameweek_breakdown": {
+            "1": {
+                "points_scored": 1,
+                "points_scored_for_team": 1,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "2": {
+                "points_scored": 1,
+                "points_scored_for_team": 1,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "3": {
+                "points_scored": 0,
+                "points_scored_for_team": 0,
+                "in_final_team": false,
+                "was_captain": false
+            },
+            "4": {
+                "points_scored": 2,
+                "points_scored_for_team": 2,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "5": {
+                "points_scored": 5,
+                "points_scored_for_team": 5,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "6": {
+                "points_scored": 1,
+                "points_scored_for_team": 1,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "7": {
+                "points_scored": 6,
+                "points_scored_for_team": 6,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "8": {
+                "points_scored": 8,
+                "points_scored_for_team": 8,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "9": {
+                "points_scored": 1,
+                "points_scored_for_team": 1,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "10": {
+                "points_scored": 0,
+                "points_scored_for_team": 0,
+                "in_final_team": false,
+                "was_captain": false
+            },
+            "11": {
+                "points_scored": 2,
+                "points_scored_for_team": 2,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "12": {
+                "points_scored": 2,
+                "points_scored_for_team": 2,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "13": {
+                "points_scored": 6,
+                "points_scored_for_team": 6,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "14": {
+                "points_scored": 2,
+                "points_scored_for_team": 2,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "15": {
+                "points_scored": 1,
+                "points_scored_for_team": 1,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "16": {
+                "points_scored": 2,
+                "points_scored_for_team": 2,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "17": {
+                "points_scored": 6,
+                "points_scored_for_team": 6,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "18": {
+                "points_scored": 10,
+                "points_scored_for_team": 10,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "19": {
+                "points_scored": 1,
+                "points_scored_for_team": 1,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "20": {
+                "points_scored": 1,
+                "points_scored_for_team": 1,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "21": {
+                "points_scored": 17,
+                "points_scored_for_team": 17,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "22": {
+                "points_scored": 2,
+                "points_scored_for_team": 2,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "23": {
+                "points_scored": -1,
+                "points_scored_for_team": -1,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "24": {
+                "points_scored": 12,
+                "points_scored_for_team": 12,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "25": {
+                "points_scored": 6,
+                "points_scored_for_team": 6,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "26": {
+                "points_scored": 2,
+                "points_scored_for_team": 2,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "27": {
+                "points_scored": 6,
+                "points_scored_for_team": 6,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "28": {
+                "points_scored": 1,
+                "points_scored_for_team": 1,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "29": {
+                "points_scored": 0,
+                "points_scored_for_team": 0,
+                "in_final_team": false,
+                "was_captain": false
+            },
+            "30": {
+                "points_scored": 6,
+                "points_scored_for_team": 6,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "31": {
+                "points_scored": 6,
+                "points_scored_for_team": 6,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "32": {
+                "points_scored": 6,
+                "points_scored_for_team": 6,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "33": {
+                "points_scored": 0,
+                "points_scored_for_team": 0,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "34": {
+                "points_scored": 12,
+                "points_scored_for_team": 12,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "35": {
+                "points_scored": 1,
+                "points_scored_for_team": 1,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "36": {
+                "points_scored": 7,
+                "points_scored_for_team": 7,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "37": {
+                "points_scored": 7,
+                "points_scored_for_team": 7,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "38": {
+                "points_scored": 1,
+                "points_scored_for_team": 1,
+                "in_final_team": true,
+                "was_captain": false
+            }
+        }
+    },
     "20": {
         "web_name": "Saliba",
         "position": "DEF",
@@ -701,240 +935,6 @@
             }
         }
     },
-    "506": {
-        "web_name": "Pedro Porro",
-        "position": "DEF",
-        "gameweek_breakdown": {
-            "1": {
-                "points_scored": 0,
-                "points_scored_for_team": 0,
-                "in_final_team": false,
-                "was_captain": false
-            },
-            "2": {
-                "points_scored": 6,
-                "points_scored_for_team": 6,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "3": {
-                "points_scored": 6,
-                "points_scored_for_team": 6,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "4": {
-                "points_scored": 4,
-                "points_scored_for_team": 4,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "5": {
-                "points_scored": 2,
-                "points_scored_for_team": 2,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "6": {
-                "points_scored": 1,
-                "points_scored_for_team": 1,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "7": {
-                "points_scored": 7,
-                "points_scored_for_team": 7,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "8": {
-                "points_scored": 6,
-                "points_scored_for_team": 6,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "9": {
-                "points_scored": 6,
-                "points_scored_for_team": 6,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "10": {
-                "points_scored": 2,
-                "points_scored_for_team": 2,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "11": {
-                "points_scored": 0,
-                "points_scored_for_team": 0,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "12": {
-                "points_scored": 5,
-                "points_scored_for_team": 5,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "13": {
-                "points_scored": 5,
-                "points_scored_for_team": 5,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "14": {
-                "points_scored": 0,
-                "points_scored_for_team": 0,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "15": {
-                "points_scored": 5,
-                "points_scored_for_team": 5,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "16": {
-                "points_scored": 5,
-                "points_scored_for_team": 5,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "17": {
-                "points_scored": 8,
-                "points_scored_for_team": 8,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "18": {
-                "points_scored": 2,
-                "points_scored_for_team": 2,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "19": {
-                "points_scored": 5,
-                "points_scored_for_team": 5,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "20": {
-                "points_scored": 2,
-                "points_scored_for_team": 2,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "21": {
-                "points_scored": 6,
-                "points_scored_for_team": 6,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "22": {
-                "points_scored": 1,
-                "points_scored_for_team": 1,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "23": {
-                "points_scored": 1,
-                "points_scored_for_team": 1,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "24": {
-                "points_scored": 2,
-                "points_scored_for_team": 2,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "25": {
-                "points_scored": 0,
-                "points_scored_for_team": 0,
-                "in_final_team": false,
-                "was_captain": false
-            },
-            "26": {
-                "points_scored": 0,
-                "points_scored_for_team": 0,
-                "in_final_team": false,
-                "was_captain": false
-            },
-            "27": {
-                "points_scored": 0,
-                "points_scored_for_team": 0,
-                "in_final_team": false,
-                "was_captain": false
-            },
-            "28": {
-                "points_scored": 7,
-                "points_scored_for_team": 7,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "29": {
-                "points_scored": 1,
-                "points_scored_for_team": 1,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "30": {
-                "points_scored": 2,
-                "points_scored_for_team": 2,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "31": {
-                "points_scored": 2,
-                "points_scored_for_team": 2,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "32": {
-                "points_scored": 11,
-                "points_scored_for_team": 11,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "33": {
-                "points_scored": 0,
-                "points_scored_for_team": 0,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "34": {
-                "points_scored": 0,
-                "points_scored_for_team": 0,
-                "in_final_team": false,
-                "was_captain": false
-            },
-            "35": {
-                "points_scored": 2,
-                "points_scored_for_team": 2,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "36": {
-                "points_scored": 0,
-                "points_scored_for_team": 0,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "37": {
-                "points_scored": 10,
-                "points_scored_for_team": 10,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "38": {
-                "points_scored": 14,
-                "points_scored_for_team": 14,
-                "in_final_team": true,
-                "was_captain": false
-            }
-        }
-    },
     "362": {
         "web_name": "Palmer",
         "position": "MID",
@@ -1166,6 +1166,240 @@
                 "points_scored_for_team": 6,
                 "in_final_team": true,
                 "was_captain": true
+            }
+        }
+    },
+    "308": {
+        "web_name": "Salah",
+        "position": "MID",
+        "gameweek_breakdown": {
+            "1": {
+                "points_scored": 5,
+                "points_scored_for_team": 5,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "2": {
+                "points_scored": 5,
+                "points_scored_for_team": 5,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "3": {
+                "points_scored": 5,
+                "points_scored_for_team": 5,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "4": {
+                "points_scored": 8,
+                "points_scored_for_team": 8,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "5": {
+                "points_scored": 10,
+                "points_scored_for_team": 10,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "6": {
+                "points_scored": 10,
+                "points_scored_for_team": 10,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "7": {
+                "points_scored": 1,
+                "points_scored_for_team": 1,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "8": {
+                "points_scored": 15,
+                "points_scored_for_team": 15,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "9": {
+                "points_scored": 16,
+                "points_scored_for_team": 16,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "10": {
+                "points_scored": 8,
+                "points_scored_for_team": 8,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "11": {
+                "points_scored": 2,
+                "points_scored_for_team": 2,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "12": {
+                "points_scored": 16,
+                "points_scored_for_team": 16,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "13": {
+                "points_scored": 5,
+                "points_scored_for_team": 5,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "14": {
+                "points_scored": 5,
+                "points_scored_for_team": 5,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "15": {
+                "points_scored": 3,
+                "points_scored_for_team": 3,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "16": {
+                "points_scored": 13,
+                "points_scored_for_team": 13,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "17": {
+                "points_scored": 3,
+                "points_scored_for_team": 3,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "18": {
+                "points_scored": 7,
+                "points_scored_for_team": 7,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "19": {
+                "points_scored": 3,
+                "points_scored_for_team": 3,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "20": {
+                "points_scored": 16,
+                "points_scored_for_team": 16,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "21": {
+                "points_scored": 0,
+                "points_scored_for_team": 0,
+                "in_final_team": false,
+                "was_captain": false
+            },
+            "22": {
+                "points_scored": 0,
+                "points_scored_for_team": 0,
+                "in_final_team": false,
+                "was_captain": false
+            },
+            "23": {
+                "points_scored": 0,
+                "points_scored_for_team": 0,
+                "in_final_team": false,
+                "was_captain": false
+            },
+            "24": {
+                "points_scored": 0,
+                "points_scored_for_team": 0,
+                "in_final_team": false,
+                "was_captain": false
+            },
+            "25": {
+                "points_scored": 11,
+                "points_scored_for_team": 11,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "26": {
+                "points_scored": 0,
+                "points_scored_for_team": 0,
+                "in_final_team": false,
+                "was_captain": false
+            },
+            "27": {
+                "points_scored": 0,
+                "points_scored_for_team": 0,
+                "in_final_team": false,
+                "was_captain": false
+            },
+            "28": {
+                "points_scored": 1,
+                "points_scored_for_team": 1,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "29": {
+                "points_scored": 0,
+                "points_scored_for_team": 0,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "30": {
+                "points_scored": 7,
+                "points_scored_for_team": 7,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "31": {
+                "points_scored": 1,
+                "points_scored_for_team": 1,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "32": {
+                "points_scored": 8,
+                "points_scored_for_team": 8,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "33": {
+                "points_scored": 2,
+                "points_scored_for_team": 2,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "34": {
+                "points_scored": 3,
+                "points_scored_for_team": 3,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "35": {
+                "points_scored": 1,
+                "points_scored_for_team": 1,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "36": {
+                "points_scored": 13,
+                "points_scored_for_team": 13,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "37": {
+                "points_scored": 2,
+                "points_scored_for_team": 2,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "38": {
+                "points_scored": 6,
+                "points_scored_for_team": 6,
+                "in_final_team": true,
+                "was_captain": false
             }
         }
     },
@@ -1871,240 +2105,6 @@
             }
         }
     },
-    "19": {
-        "web_name": "Saka",
-        "position": "MID",
-        "gameweek_breakdown": {
-            "1": {
-                "points_scored": 10,
-                "points_scored_for_team": 10,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "2": {
-                "points_scored": 3,
-                "points_scored_for_team": 3,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "3": {
-                "points_scored": 8,
-                "points_scored_for_team": 8,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "4": {
-                "points_scored": 4,
-                "points_scored_for_team": 4,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "5": {
-                "points_scored": 6,
-                "points_scored_for_team": 6,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "6": {
-                "points_scored": 13,
-                "points_scored_for_team": 13,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "7": {
-                "points_scored": 9,
-                "points_scored_for_team": 9,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "8": {
-                "points_scored": 0,
-                "points_scored_for_team": 0,
-                "in_final_team": false,
-                "was_captain": false
-            },
-            "9": {
-                "points_scored": 5,
-                "points_scored_for_team": 5,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "10": {
-                "points_scored": 6,
-                "points_scored_for_team": 6,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "11": {
-                "points_scored": 2,
-                "points_scored_for_team": 2,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "12": {
-                "points_scored": 5,
-                "points_scored_for_team": 5,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "13": {
-                "points_scored": 8,
-                "points_scored_for_team": 8,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "14": {
-                "points_scored": 8,
-                "points_scored_for_team": 8,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "15": {
-                "points_scored": 5,
-                "points_scored_for_team": 5,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "16": {
-                "points_scored": 2,
-                "points_scored_for_team": 2,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "17": {
-                "points_scored": 3,
-                "points_scored_for_team": 3,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "18": {
-                "points_scored": 1,
-                "points_scored_for_team": 1,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "19": {
-                "points_scored": 2,
-                "points_scored_for_team": 2,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "20": {
-                "points_scored": 7,
-                "points_scored_for_team": 7,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "21": {
-                "points_scored": 3,
-                "points_scored_for_team": 3,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "22": {
-                "points_scored": 10,
-                "points_scored_for_team": 10,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "23": {
-                "points_scored": 9,
-                "points_scored_for_team": 9,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "24": {
-                "points_scored": 15,
-                "points_scored_for_team": 15,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "25": {
-                "points_scored": 15,
-                "points_scored_for_team": 15,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "26": {
-                "points_scored": 10,
-                "points_scored_for_team": 10,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "27": {
-                "points_scored": 7,
-                "points_scored_for_team": 7,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "28": {
-                "points_scored": 2,
-                "points_scored_for_team": 2,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "29": {
-                "points_scored": 0,
-                "points_scored_for_team": 0,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "30": {
-                "points_scored": 3,
-                "points_scored_for_team": 3,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "31": {
-                "points_scored": 0,
-                "points_scored_for_team": 0,
-                "in_final_team": false,
-                "was_captain": false
-            },
-            "32": {
-                "points_scored": 10,
-                "points_scored_for_team": 10,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "33": {
-                "points_scored": 2,
-                "points_scored_for_team": 2,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "34": {
-                "points_scored": 9,
-                "points_scored_for_team": 9,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "35": {
-                "points_scored": 12,
-                "points_scored_for_team": 12,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "36": {
-                "points_scored": 10,
-                "points_scored_for_team": 10,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "37": {
-                "points_scored": 2,
-                "points_scored_for_team": 2,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "38": {
-                "points_scored": 0,
-                "points_scored_for_team": 0,
-                "in_final_team": false,
-                "was_captain": false
-            }
-        }
-    },
     "60": {
         "web_name": "Watkins",
         "position": "FWD",
@@ -2526,7 +2526,7 @@
             "31": {
                 "points_scored": 0,
                 "points_scored_for_team": 0,
-                "in_final_team": true,
+                "in_final_team": false,
                 "was_captain": false
             },
             "32": {
@@ -2807,6 +2807,240 @@
             }
         }
     },
+    "232": {
+        "web_name": "Mateta",
+        "position": "FWD",
+        "gameweek_breakdown": {
+            "1": {
+                "points_scored": 0,
+                "points_scored_for_team": 0,
+                "in_final_team": false,
+                "was_captain": false
+            },
+            "2": {
+                "points_scored": 0,
+                "points_scored_for_team": 0,
+                "in_final_team": false,
+                "was_captain": false
+            },
+            "3": {
+                "points_scored": 1,
+                "points_scored_for_team": 1,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "4": {
+                "points_scored": 7,
+                "points_scored_for_team": 0,
+                "in_final_team": false,
+                "was_captain": false
+            },
+            "5": {
+                "points_scored": 5,
+                "points_scored_for_team": 0,
+                "in_final_team": false,
+                "was_captain": false
+            },
+            "6": {
+                "points_scored": 1,
+                "points_scored_for_team": 0,
+                "in_final_team": false,
+                "was_captain": false
+            },
+            "7": {
+                "points_scored": 2,
+                "points_scored_for_team": 0,
+                "in_final_team": false,
+                "was_captain": false
+            },
+            "8": {
+                "points_scored": 2,
+                "points_scored_for_team": 2,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "9": {
+                "points_scored": 1,
+                "points_scored_for_team": 0,
+                "in_final_team": false,
+                "was_captain": false
+            },
+            "10": {
+                "points_scored": 1,
+                "points_scored_for_team": 0,
+                "in_final_team": false,
+                "was_captain": false
+            },
+            "11": {
+                "points_scored": 0,
+                "points_scored_for_team": 0,
+                "in_final_team": false,
+                "was_captain": false
+            },
+            "12": {
+                "points_scored": 1,
+                "points_scored_for_team": 0,
+                "in_final_team": false,
+                "was_captain": false
+            },
+            "13": {
+                "points_scored": 1,
+                "points_scored_for_team": 0,
+                "in_final_team": false,
+                "was_captain": false
+            },
+            "14": {
+                "points_scored": 1,
+                "points_scored_for_team": 0,
+                "in_final_team": false,
+                "was_captain": false
+            },
+            "15": {
+                "points_scored": 1,
+                "points_scored_for_team": 0,
+                "in_final_team": false,
+                "was_captain": false
+            },
+            "16": {
+                "points_scored": 7,
+                "points_scored_for_team": 7,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "17": {
+                "points_scored": 12,
+                "points_scored_for_team": 12,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "18": {
+                "points_scored": 1,
+                "points_scored_for_team": 1,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "19": {
+                "points_scored": 2,
+                "points_scored_for_team": 2,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "20": {
+                "points_scored": 2,
+                "points_scored_for_team": 2,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "21": {
+                "points_scored": 2,
+                "points_scored_for_team": 2,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "22": {
+                "points_scored": 2,
+                "points_scored_for_team": 2,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "23": {
+                "points_scored": 6,
+                "points_scored_for_team": 6,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "24": {
+                "points_scored": 2,
+                "points_scored_for_team": 2,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "25": {
+                "points_scored": 5,
+                "points_scored_for_team": 0,
+                "in_final_team": false,
+                "was_captain": false
+            },
+            "26": {
+                "points_scored": 6,
+                "points_scored_for_team": 6,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "27": {
+                "points_scored": 2,
+                "points_scored_for_team": 2,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "28": {
+                "points_scored": 8,
+                "points_scored_for_team": 0,
+                "in_final_team": false,
+                "was_captain": false
+            },
+            "29": {
+                "points_scored": 0,
+                "points_scored_for_team": 0,
+                "in_final_team": false,
+                "was_captain": false
+            },
+            "30": {
+                "points_scored": 9,
+                "points_scored_for_team": 0,
+                "in_final_team": false,
+                "was_captain": false
+            },
+            "31": {
+                "points_scored": 2,
+                "points_scored_for_team": 2,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "32": {
+                "points_scored": 5,
+                "points_scored_for_team": 5,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "33": {
+                "points_scored": 2,
+                "points_scored_for_team": 2,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "34": {
+                "points_scored": 29,
+                "points_scored_for_team": 29,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "35": {
+                "points_scored": 2,
+                "points_scored_for_team": 2,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "36": {
+                "points_scored": 6,
+                "points_scored_for_team": 0,
+                "in_final_team": false,
+                "was_captain": false
+            },
+            "37": {
+                "points_scored": 9,
+                "points_scored_for_team": 0,
+                "in_final_team": false,
+                "was_captain": false
+            },
+            "38": {
+                "points_scored": 20,
+                "points_scored_for_team": 20,
+                "in_final_team": true,
+                "was_captain": false
+            }
+        }
+    },
     "245": {
         "web_name": "Branthwaite",
         "position": "DEF",
@@ -2855,8 +3089,8 @@
             },
             "8": {
                 "points_scored": 6,
-                "points_scored_for_team": 6,
-                "in_final_team": true,
+                "points_scored_for_team": 0,
+                "in_final_team": false,
                 "was_captain": false
             },
             "9": {
@@ -2867,8 +3101,8 @@
             },
             "10": {
                 "points_scored": 8,
-                "points_scored_for_team": 0,
-                "in_final_team": false,
+                "points_scored_for_team": 8,
+                "in_final_team": true,
                 "was_captain": false
             },
             "11": {
@@ -2903,8 +3137,8 @@
             },
             "16": {
                 "points_scored": 5,
-                "points_scored_for_team": 5,
-                "in_final_team": true,
+                "points_scored_for_team": 0,
+                "in_final_team": false,
                 "was_captain": false
             },
             "17": {
@@ -2927,8 +3161,8 @@
             },
             "20": {
                 "points_scored": 1,
-                "points_scored_for_team": 1,
-                "in_final_team": true,
+                "points_scored_for_team": 0,
+                "in_final_team": false,
                 "was_captain": false
             },
             "21": {
@@ -2957,8 +3191,8 @@
             },
             "25": {
                 "points_scored": 2,
-                "points_scored_for_team": 2,
-                "in_final_team": true,
+                "points_scored_for_team": 0,
+                "in_final_team": false,
                 "was_captain": false
             },
             "26": {
@@ -2969,8 +3203,8 @@
             },
             "27": {
                 "points_scored": 1,
-                "points_scored_for_team": 1,
-                "in_final_team": true,
+                "points_scored_for_team": 0,
+                "in_final_team": false,
                 "was_captain": false
             },
             "28": {
@@ -2999,14 +3233,14 @@
             },
             "32": {
                 "points_scored": 6,
-                "points_scored_for_team": 6,
-                "in_final_team": true,
+                "points_scored_for_team": 0,
+                "in_final_team": false,
                 "was_captain": false
             },
             "33": {
                 "points_scored": -1,
-                "points_scored_for_team": -1,
-                "in_final_team": true,
+                "points_scored_for_team": 0,
+                "in_final_team": false,
                 "was_captain": false
             },
             "34": {
@@ -3017,8 +3251,8 @@
             },
             "35": {
                 "points_scored": 6,
-                "points_scored_for_team": 6,
-                "in_final_team": true,
+                "points_scored_for_team": 0,
+                "in_final_team": false,
                 "was_captain": false
             },
             "36": {
@@ -3035,306 +3269,72 @@
             },
             "38": {
                 "points_scored": 1,
-                "points_scored_for_team": 1,
-                "in_final_team": true,
+                "points_scored_for_team": 0,
+                "in_final_team": false,
                 "was_captain": false
             }
         }
     },
-    "85": {
-        "web_name": "Solanke",
-        "position": "FWD",
+    "506": {
+        "web_name": "Pedro Porro",
+        "position": "DEF",
         "gameweek_breakdown": {
             "1": {
-                "points_scored": 7,
-                "points_scored_for_team": 0,
-                "in_final_team": false,
-                "was_captain": false
-            },
-            "2": {
-                "points_scored": 5,
-                "points_scored_for_team": 5,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "3": {
-                "points_scored": 2,
-                "points_scored_for_team": 0,
-                "in_final_team": false,
-                "was_captain": false
-            },
-            "4": {
-                "points_scored": 7,
-                "points_scored_for_team": 0,
-                "in_final_team": false,
-                "was_captain": false
-            },
-            "5": {
-                "points_scored": 2,
-                "points_scored_for_team": 0,
-                "in_final_team": false,
-                "was_captain": false
-            },
-            "6": {
-                "points_scored": 6,
-                "points_scored_for_team": 0,
-                "in_final_team": false,
-                "was_captain": false
-            },
-            "7": {
-                "points_scored": 2,
-                "points_scored_for_team": 0,
-                "in_final_team": false,
-                "was_captain": false
-            },
-            "8": {
-                "points_scored": 1,
-                "points_scored_for_team": 1,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "9": {
-                "points_scored": 7,
-                "points_scored_for_team": 0,
-                "in_final_team": false,
-                "was_captain": false
-            },
-            "10": {
-                "points_scored": 2,
-                "points_scored_for_team": 0,
-                "in_final_team": false,
-                "was_captain": false
-            },
-            "11": {
-                "points_scored": 2,
-                "points_scored_for_team": 0,
-                "in_final_team": false,
-                "was_captain": false
-            },
-            "12": {
-                "points_scored": 13,
-                "points_scored_for_team": 0,
-                "in_final_team": false,
-                "was_captain": false
-            },
-            "13": {
-                "points_scored": 2,
-                "points_scored_for_team": 0,
-                "in_final_team": false,
-                "was_captain": false
-            },
-            "14": {
-                "points_scored": 6,
-                "points_scored_for_team": 0,
-                "in_final_team": false,
-                "was_captain": false
-            },
-            "15": {
-                "points_scored": 2,
-                "points_scored_for_team": 0,
-                "in_final_team": false,
-                "was_captain": false
-            },
-            "16": {
-                "points_scored": 7,
-                "points_scored_for_team": 0,
-                "in_final_team": false,
-                "was_captain": false
-            },
-            "17": {
                 "points_scored": 0,
                 "points_scored_for_team": 0,
                 "in_final_team": false,
                 "was_captain": false
             },
-            "18": {
-                "points_scored": 17,
-                "points_scored_for_team": 17,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "19": {
+            "2": {
                 "points_scored": 6,
                 "points_scored_for_team": 6,
                 "in_final_team": true,
                 "was_captain": false
             },
-            "20": {
-                "points_scored": 2,
+            "3": {
+                "points_scored": 6,
                 "points_scored_for_team": 0,
                 "in_final_team": false,
                 "was_captain": false
             },
-            "21": {
-                "points_scored": 2,
-                "points_scored_for_team": 2,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "22": {
-                "points_scored": 8,
-                "points_scored_for_team": 0,
-                "in_final_team": false,
-                "was_captain": false
-            },
-            "23": {
-                "points_scored": 2,
-                "points_scored_for_team": 0,
-                "in_final_team": false,
-                "was_captain": false
-            },
-            "24": {
+            "4": {
                 "points_scored": 4,
                 "points_scored_for_team": 0,
                 "in_final_team": false,
                 "was_captain": false
             },
-            "25": {
-                "points_scored": 12,
-                "points_scored_for_team": 0,
-                "in_final_team": false,
-                "was_captain": false
-            },
-            "26": {
-                "points_scored": 2,
-                "points_scored_for_team": 2,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "27": {
-                "points_scored": 2,
-                "points_scored_for_team": 0,
-                "in_final_team": false,
-                "was_captain": false
-            },
-            "28": {
-                "points_scored": 8,
-                "points_scored_for_team": 0,
-                "in_final_team": false,
-                "was_captain": false
-            },
-            "29": {
-                "points_scored": 0,
-                "points_scored_for_team": 0,
-                "in_final_team": false,
-                "was_captain": false
-            },
-            "30": {
-                "points_scored": 7,
-                "points_scored_for_team": 0,
-                "in_final_team": false,
-                "was_captain": false
-            },
-            "31": {
-                "points_scored": 2,
-                "points_scored_for_team": 2,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "32": {
-                "points_scored": 2,
-                "points_scored_for_team": 0,
-                "in_final_team": false,
-                "was_captain": false
-            },
-            "33": {
-                "points_scored": 7,
-                "points_scored_for_team": 0,
-                "in_final_team": false,
-                "was_captain": false
-            },
-            "34": {
-                "points_scored": 8,
-                "points_scored_for_team": 8,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "35": {
-                "points_scored": 2,
-                "points_scored_for_team": 0,
-                "in_final_team": false,
-                "was_captain": false
-            },
-            "36": {
-                "points_scored": 2,
-                "points_scored_for_team": 0,
-                "in_final_team": false,
-                "was_captain": false
-            },
-            "37": {
-                "points_scored": 6,
-                "points_scored_for_team": 0,
-                "in_final_team": false,
-                "was_captain": false
-            },
-            "38": {
-                "points_scored": 1,
-                "points_scored_for_team": 1,
-                "in_final_team": true,
-                "was_captain": false
-            }
-        }
-    },
-    "616": {
-        "web_name": "Gvardiol",
-        "position": "DEF",
-        "gameweek_breakdown": {
-            "1": {
-                "points_scored": 1,
-                "points_scored_for_team": 1,
-                "in_final_team": true,
-                "was_captain": false
-            },
-            "2": {
-                "points_scored": 6,
-                "points_scored_for_team": 0,
-                "in_final_team": false,
-                "was_captain": false
-            },
-            "3": {
-                "points_scored": 2,
-                "points_scored_for_team": 0,
-                "in_final_team": false,
-                "was_captain": false
-            },
-            "4": {
-                "points_scored": 0,
-                "points_scored_for_team": 0,
-                "in_final_team": false,
-                "was_captain": false
-            },
             "5": {
-                "points_scored": 1,
+                "points_scored": 2,
                 "points_scored_for_team": 0,
                 "in_final_team": false,
                 "was_captain": false
             },
             "6": {
-                "points_scored": 7,
+                "points_scored": 1,
                 "points_scored_for_team": 0,
                 "in_final_team": false,
                 "was_captain": false
             },
             "7": {
-                "points_scored": 0,
+                "points_scored": 7,
                 "points_scored_for_team": 0,
                 "in_final_team": false,
                 "was_captain": false
             },
             "8": {
-                "points_scored": 2,
+                "points_scored": 6,
                 "points_scored_for_team": 0,
                 "in_final_team": false,
                 "was_captain": false
             },
             "9": {
-                "points_scored": 2,
+                "points_scored": 6,
                 "points_scored_for_team": 0,
                 "in_final_team": false,
                 "was_captain": false
             },
             "10": {
-                "points_scored": 6,
+                "points_scored": 2,
                 "points_scored_for_team": 0,
                 "in_final_team": false,
                 "was_captain": false
@@ -3346,13 +3346,13 @@
                 "was_captain": false
             },
             "12": {
-                "points_scored": 0,
+                "points_scored": 5,
                 "points_scored_for_team": 0,
                 "in_final_team": false,
                 "was_captain": false
             },
             "13": {
-                "points_scored": 0,
+                "points_scored": 5,
                 "points_scored_for_team": 0,
                 "in_final_team": false,
                 "was_captain": false
@@ -3364,61 +3364,61 @@
                 "was_captain": false
             },
             "15": {
-                "points_scored": 2,
+                "points_scored": 5,
                 "points_scored_for_team": 0,
                 "in_final_team": false,
                 "was_captain": false
             },
             "16": {
-                "points_scored": 2,
+                "points_scored": 5,
                 "points_scored_for_team": 0,
                 "in_final_team": false,
                 "was_captain": false
             },
             "17": {
-                "points_scored": 1,
-                "points_scored_for_team": 1,
-                "in_final_team": true,
+                "points_scored": 8,
+                "points_scored_for_team": 0,
+                "in_final_team": false,
                 "was_captain": false
             },
             "18": {
-                "points_scored": 0,
+                "points_scored": 2,
                 "points_scored_for_team": 0,
                 "in_final_team": false,
                 "was_captain": false
             },
             "19": {
-                "points_scored": 1,
+                "points_scored": 5,
                 "points_scored_for_team": 0,
                 "in_final_team": false,
                 "was_captain": false
             },
             "20": {
-                "points_scored": 6,
+                "points_scored": 2,
                 "points_scored_for_team": 0,
                 "in_final_team": false,
                 "was_captain": false
             },
             "21": {
+                "points_scored": 6,
+                "points_scored_for_team": 6,
+                "in_final_team": true,
+                "was_captain": false
+            },
+            "22": {
                 "points_scored": 1,
                 "points_scored_for_team": 0,
                 "in_final_team": false,
                 "was_captain": false
             },
-            "22": {
-                "points_scored": 2,
-                "points_scored_for_team": 0,
-                "in_final_team": false,
-                "was_captain": false
-            },
             "23": {
-                "points_scored": 2,
+                "points_scored": 1,
                 "points_scored_for_team": 0,
                 "in_final_team": false,
                 "was_captain": false
             },
             "24": {
-                "points_scored": 0,
+                "points_scored": 2,
                 "points_scored_for_team": 0,
                 "in_final_team": false,
                 "was_captain": false
@@ -3442,19 +3442,19 @@
                 "was_captain": false
             },
             "28": {
-                "points_scored": 0,
+                "points_scored": 7,
                 "points_scored_for_team": 0,
                 "in_final_team": false,
                 "was_captain": false
             },
             "29": {
-                "points_scored": 0,
-                "points_scored_for_team": 0,
-                "in_final_team": false,
+                "points_scored": 1,
+                "points_scored_for_team": 1,
+                "in_final_team": true,
                 "was_captain": false
             },
             "30": {
-                "points_scored": 9,
+                "points_scored": 2,
                 "points_scored_for_team": 0,
                 "in_final_team": false,
                 "was_captain": false
@@ -3466,43 +3466,43 @@
                 "was_captain": false
             },
             "32": {
-                "points_scored": 0,
+                "points_scored": 11,
                 "points_scored_for_team": 0,
                 "in_final_team": false,
                 "was_captain": false
             },
             "33": {
-                "points_scored": 12,
+                "points_scored": 0,
                 "points_scored_for_team": 0,
                 "in_final_team": false,
                 "was_captain": false
             },
             "34": {
-                "points_scored": 6,
-                "points_scored_for_team": 6,
-                "in_final_team": true,
+                "points_scored": 0,
+                "points_scored_for_team": 0,
+                "in_final_team": false,
                 "was_captain": false
             },
             "35": {
-                "points_scored": 15,
+                "points_scored": 2,
                 "points_scored_for_team": 0,
                 "in_final_team": false,
                 "was_captain": false
             },
             "36": {
-                "points_scored": 6,
+                "points_scored": 0,
                 "points_scored_for_team": 0,
                 "in_final_team": false,
                 "was_captain": false
             },
             "37": {
-                "points_scored": 27,
+                "points_scored": 10,
                 "points_scored_for_team": 0,
                 "in_final_team": false,
                 "was_captain": false
             },
             "38": {
-                "points_scored": 2,
+                "points_scored": 14,
                 "points_scored_for_team": 0,
                 "in_final_team": false,
                 "was_captain": false
