@@ -469,6 +469,8 @@ def find_optimal_weighting_and_ordering(player_gameweek_df, weights_array):
         best_total_points = 0
         best_team_order = None
         best_simulated_season = None
+        captain = None
+        vice_captain = None
 
         # Loop through each bench order
         for bench_order in players_bench_orders:
@@ -496,11 +498,15 @@ def find_optimal_weighting_and_ordering(player_gameweek_df, weights_array):
                 best_total_points = total_points
                 best_team_order = team_order
                 best_simulated_season = simulated_season
+                captain = sorted_players_df[(sorted_players_df['is_captain'] == True)]['id'].tolist()
+                vice_captain = sorted_players_df[(sorted_players_df['is_vice_captain'] == True)]['id'].tolist()
 
         # Create a dictionary to store the best weight, team order, total points, and simulated season
         weight_best_order_return_dic = {
             'weight': weight,
             'best_team_order': best_team_order,
+            'simulated_captain': captain,
+            'simulated_vice_captain': vice_captain,
             'best_total_points': best_total_points,
             'best_simulated_season': best_simulated_season
         }
@@ -624,7 +630,7 @@ if __name__ == "__main__":
         for gw_num, gw_data in gw.items():
             total_points += gw_data['points']
     print("\n------------------------------------------------------")
-    print("Higly optimised solution:")
+    print("Highly optimised solution:")
     print("------------------------------------------------------")
     print_lineup(model_players_df)
     print('Total points:', total_points)
@@ -653,16 +659,31 @@ if __name__ == "__main__":
             if result['best_total_points'] > most_points:
                 most_points = result['best_total_points']
                 most_point_simulation = result
-            
-            print(result)
-        
+
+        df_for_optimisation_output = {
+            'lineup': most_point_simulation['best_team_order'][:11],
+            'bench': most_point_simulation['best_team_order'][-4:],
+            'captaincy': most_point_simulation['simulated_captain'],
+            'vice_captaincy': most_point_simulation['simulated_vice_captain']
+        }
+
+        df_for_optimisation = retrieve_model_gameweek_history(df_for_optimisation_output, player_gameweek_df)
+
         # Final optimised team used the simulation with the most points
-        final_optimised_df = order_df(best_captain_vice_captain(model_players_df, most_point_simulation))
+        final_optimised_df = order_df(best_captain_vice_captain(df_for_optimisation, most_point_simulation))
         data = get_fpl_data()
         # Export the optimised team
         final_optimised_df.to_csv(f'set_and_forget/optimal_teams/set_and_forget_{get_current_season(data)}.csv', index=False)
         # Simulate the model one final time
         optimised_season_simulation = simulate_model_team(final_optimised_df)
+
+        points_check = 0
+        print('\n')
+        for gw in optimised_season_simulation:
+            for gw_num, gw_data in gw.items():
+                points_check += gw_data['points']
+
+        print('Points check:', points_check)
 
         # Print the results related to the fully optimised model
         print("\n------------------------------------------------------")
