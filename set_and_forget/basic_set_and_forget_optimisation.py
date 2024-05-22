@@ -544,7 +544,7 @@ def best_captain_vice_captain(model_players_df, result):
     for count, captaincy_pair in enumerate(all_captaincy_pairs):
         # Create a copy of the model_players_df and set the captain and vice-captain values
         captaincy_check_df = sorted_players_df.copy()
-        print(f'Processing captaincy pair: {count} of {len(all_captaincy_pairs)}', end='\r', flush=True)
+        print(f'Processing captaincy pair: {count} of {len(all_captaincy_pairs)} - {captaincy_pair}' , end='\r', flush=True)
         captaincy_check_df.loc[:, 'is_captain'] = False
         captaincy_check_df.loc[:, 'is_vice_captain'] = False
         captaincy_check_df.loc[captaincy_check_df['id'] == captaincy_pair[0], 'is_captain'] = True
@@ -635,7 +635,7 @@ if __name__ == "__main__":
     fully_optimise = 'N'
     fully_optimise = input('Would you like to fully optimise the team (test different bench weightings and bench orderings)? (Y/N) ')
     if fully_optimise.upper() == 'Y':
-        weights_to_test = [0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95]
+        weights_to_test = [0.7, 0.75]
         # Get the results for each weight
         simulated_season_optimised_team_order_weights = find_optimal_weighting_and_ordering(player_gameweek_df, weights_to_test)
         print("\n------------------------------------------------------")
@@ -653,6 +653,8 @@ if __name__ == "__main__":
             if result['best_total_points'] > most_points:
                 most_points = result['best_total_points']
                 most_point_simulation = result
+            
+            print(result)
         
         # Final optimised team used the simulation with the most points
         final_optimised_df = order_df(best_captain_vice_captain(model_players_df, most_point_simulation))
